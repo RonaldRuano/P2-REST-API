@@ -2,17 +2,16 @@ index.js
 const mysql = require('mysql');
 const express = require('express');
 const bodyParser = require('body-parser');
-const bdConfig = require('./configurations/bd');
+const bdconfig = require('./configurations/bd');
 
 var app = express();
 app.use(bodyParser.json());
 
-var mysqlConnection = mysql.createConnection({
-    host: bdConfig.host,
-    user: bdConfig.user,
-    password: bdConfig.Password,
-
-
+var mysqlconnectin = mysql.createConnection({
+    host: bdconfig.host,
+    user: bdconfig.user,
+    password: bdconfig.Password,
+    database: bdconfig.database
 });
 
 //Crear Persona
@@ -248,14 +247,6 @@ app.delete("/Eliminarestudiante/:id", (req, res) => {
             }
         });
 });
-
-
-
-
-
-
-
-
 
 
 app.listen(process.env.PORT ||3000);
