@@ -7,7 +7,7 @@ const bdconfig = require('./configurations/bd');
 var app = express();
 app.use(bodyParser.json());
 
-var mysqlconnectin = mysql.createConnection({
+var mysqlConnection = mysql.createConnection({
     host: bdconfig.host,
     user: bdconfig.user,
     password: bdconfig.Password,
