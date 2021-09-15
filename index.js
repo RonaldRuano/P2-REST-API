@@ -34,7 +34,7 @@ app.post("/Crearpersonas", (req, res) => {
 
 //Leer tododas las personas
 app.get("/Leerpersonas", (req, res) => {
-    console.log("get lista Personas");
+    console.log("get lista Persona");
     mysqlConnection.query('Select * from persona', (err, rows, fields) => {
         if (!err) {
             res.send(rows);
