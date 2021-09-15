@@ -126,7 +126,7 @@ app.get("/Leermaestro", (req, res) => {
 //Buscar a un maestro
 app.get("/Leerunmaestro/:id", (req, res) => {
     console.log("get maestro");
-    mysqlConnection.query('select .id_persona ,d.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id where id_persona = ?', [req.params.id], (err, rows, fields) => {
+    mysqlConnection.query('select d.id_persona ,d.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id where id_persona = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
             res.send(rows);
         } else {
