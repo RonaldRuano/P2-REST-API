@@ -219,7 +219,7 @@ app.put("/Actualizarestudiante/:id", (req, res) => {
     console.log("update estudiante ");
     let est = req.body;
     console.log(est);
-    mysqlConnection.query('update estudiante set id_persona = ?, fecha_ingreso = ?, carnet = ?, statu = ? where id = ?',
+    mysqlConnection.query('update estudiante set id_persona = ?, fecha_ingreso = ?, carnet = ?, status = ? where id = ?',
         [est.id_persona, est.fecha_ingreso, est.carnet, est.status, req.params.id], (err, result) => {
             if (!err) {
                 console.log(result);
