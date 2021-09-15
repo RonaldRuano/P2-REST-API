@@ -20,7 +20,7 @@ app.post("/Crearpersonas", (req, res) => {
     let est = req.body;
     console.log(est);
     mysqlConnection.query('insert into persona (nombre, apellido, fecha_nacimiento, Direccion) values (?,?,?,?)',
-        [est.Nombre, est.Apellido, est.fecha_nacimiento, est.Direccion], (err, result) => {
+        [est.nombre, est.apellido, est.fecha_nacimiento, est.Direccion], (err, result) => {
             if (!err) {
                 console.log(result);
                 
@@ -64,7 +64,7 @@ app.put("/Actualizarpersona/:id", (req, res) => {
     let est = req.body;
     console.log(est);
     mysqlConnection.query('update persona set nombre = ?, apellido = ?, fecha_nacimiento = ?, Direccion = ? where id = ?',
-        [est.Nombre, est.Apellido, est.fecha_nacimiento, est.Direccion, req.params.id], (err, result) => {
+        [est.nombre, est.apellido, est.fecha_nacimiento, est.Direccion, req.params.id], (err, result) => {
             if (!err) {
                 console.log(result);
                 
