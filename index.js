@@ -248,5 +248,18 @@ app.delete("/Eliminarestudiante/:id", (req, res) => {
         });
 });
 
+//al ejecutar la url base debe retornar los datos del estudiante •	{ nombre: “nombre estudiante”, carnet: “xxxx-xx-xxxx"
+app.get("/", (req, res) => {
+    console.log("get lista Persona");
+    mysqlConnection.query('select p.nombre, p.apellido, e.carnet from estudiante e join persona p on e.id_persona = p.id', (err, rows, fields) => {
+        if (!err) {
+            res.send(rows);
+        } else {
+            console.log(err);
+            res.send('error' + err);
+        }
+    });
+});
+
 
 app.listen(process.env.PORT ||3000);
