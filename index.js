@@ -113,7 +113,7 @@ app.post("/Maestros", (req, res) => {
 //Leer todos los maestro
 app.get("/Maestros", (req, res) => {
     console.log("get lista maestro");
-    mysqlConnection.query('select d.id_persona ,d.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id', (err, rows, fields) => {
+    mysqlConnection.query('select d.id, d.id_persona, p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id', (err, rows, fields) => {
         if (!err) {
             res.send(rows);
         } else {
@@ -126,7 +126,7 @@ app.get("/Maestros", (req, res) => {
 //Buscar a un maestro
 app.get("/Maestros/:id", (req, res) => {
     console.log("get maestro");
-    mysqlConnection.query('select d.id_persona ,d.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id where id_persona = ?', [req.params.id], (err, rows, fields) => {
+    mysqlConnection.query('select d.id, d.id_persona ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id where d.id = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
             res.send(rows);
         } else {
@@ -191,7 +191,7 @@ app.post("/Estudiantes", (req, res) => {
 //Leer todos los estudiantes
 app.get("/Estudiantes", (req, res) => {
     console.log("get lista estudiantes");
-    mysqlConnection.query('select e.id_persona, e.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, e.carnet, e.fecha_ingreso, e.status from estudiante e join persona p on e.id_persona = p.id', (err, rows, fields) => {
+    mysqlConnection.query('select e.id, e.id_persona, p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, e.carnet, e.fecha_ingreso, e.status from estudiante e join persona p on e.id_persona = p.id', (err, rows, fields) => {
         if (!err) {
             res.send(rows);
         } else {
@@ -204,7 +204,7 @@ app.get("/Estudiantes", (req, res) => {
 //Buscar a un estudiante
 app.get("/Estudiantes/:id", (req, res) => {
     console.log("get estudiante");
-    mysqlConnection.query('select e.id_persona, e.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, e.carnet, e.fecha_ingreso, e.status from estudiante e join persona p on e.id_persona = p.id where id_persona = ?', [req.params.id], (err, rows, fields) => {
+    mysqlConnection.query('select e.id, e.id_persona, p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, e.carnet, e.fecha_ingreso, e.status from estudiante e join persona p on e.id_persona = p.id where e.id = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
             res.send(rows);
         } else {
