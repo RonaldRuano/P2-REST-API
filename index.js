@@ -15,7 +15,7 @@ var mysqlConnection = mysql.createConnection({
 });
 
 //Crear Persona
-app.post("/Crearpersonas", (req, res) => {
+app.post("/Personas", (req, res) => {
     console.log("crear Personas ");
     let est = req.body;
     console.log(est);
@@ -33,7 +33,7 @@ app.post("/Crearpersonas", (req, res) => {
 });
 
 //Leer tododas las personas
-app.get("/Leerpersonas", (req, res) => {
+app.get("/Personas", (req, res) => {
     console.log("get lista Persona");
     mysqlConnection.query('Select * from persona', (err, rows, fields) => {
         if (!err) {
@@ -46,7 +46,7 @@ app.get("/Leerpersonas", (req, res) => {
 });
 
 //Buscar una persona
-app.get("/Leerunapersona/:id", (req, res) => {
+app.get("/Personas/:id", (req, res) => {
     console.log("get Persona");
     mysqlConnection.query('Select * from persona where id = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
@@ -59,7 +59,7 @@ app.get("/Leerunapersona/:id", (req, res) => {
 });
 
 //Actualizar persona
-app.put("/Actualizarpersona/:id", (req, res) => {
+app.put("/Personas/:id", (req, res) => {
     console.log("update persona ");
     let est = req.body;
     console.log(est);
@@ -77,7 +77,7 @@ app.put("/Actualizarpersona/:id", (req, res) => {
 });
 
 //Eliminar Persona
-app.delete("/Eliminarpersona/:id", (req, res) => {
+app.delete("/Personas/:id", (req, res) => {
     console.log("update persona ");
     mysqlConnection.query('delete from persona where id = ?',
         [req.params.id], (err, result) => {
@@ -93,7 +93,7 @@ app.delete("/Eliminarpersona/:id", (req, res) => {
 });
 
 //Crear Maestro
-app.post("/Crearmaestro", (req, res) => {
+app.post("/Maestros", (req, res) => {
     console.log("crear Maestro ");
     let est = req.body;
     console.log(est);
@@ -111,7 +111,7 @@ app.post("/Crearmaestro", (req, res) => {
 });
 
 //Leer todos los maestro
-app.get("/Leermaestro", (req, res) => {
+app.get("/Maestros", (req, res) => {
     console.log("get lista maestro");
     mysqlConnection.query('select d.id_persona ,d.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id', (err, rows, fields) => {
         if (!err) {
@@ -124,7 +124,7 @@ app.get("/Leermaestro", (req, res) => {
 });
 
 //Buscar a un maestro
-app.get("/Leerunmaestro/:id", (req, res) => {
+app.get("/Maestros/:id", (req, res) => {
     console.log("get maestro");
     mysqlConnection.query('select d.id_persona ,d.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, d.fecha_ingreso from docente d join persona p on d.id_persona = p.id where id_persona = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
@@ -137,7 +137,7 @@ app.get("/Leerunmaestro/:id", (req, res) => {
 });
 
 //Actualizar a un maestro
-app.put("/Actualizarmaestro/:id", (req, res) => {
+app.put("/Maestros/:id", (req, res) => {
     console.log("update maestro ");
     let est = req.body;
     console.log(est);
@@ -155,7 +155,7 @@ app.put("/Actualizarmaestro/:id", (req, res) => {
 });
 
 //Eliminar maestro
-app.delete("/Eliminarmaestro/:id", (req, res) => {
+app.delete("/Maestros/:id", (req, res) => {
     console.log("update maestro ");
     mysqlConnection.query('delete from docente where id = ?',
         [req.params.id], (err, result) => {
@@ -171,7 +171,7 @@ app.delete("/Eliminarmaestro/:id", (req, res) => {
 });
 
 //Crear Estudiante
-app.post("/Crearestudiante", (req, res) => {
+app.post("/Estudiantes", (req, res) => {
     console.log("crear estudiante ");
     let est = req.body;
     console.log(est);
@@ -189,7 +189,7 @@ app.post("/Crearestudiante", (req, res) => {
 });
 
 //Leer todos los estudiantes
-app.get("/Leerestudiante", (req, res) => {
+app.get("/Estudiantes", (req, res) => {
     console.log("get lista estudiantes");
     mysqlConnection.query('select e.id_persona, e.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, e.carnet, e.fecha_ingreso, e.status from estudiante e join persona p on e.id_persona = p.id', (err, rows, fields) => {
         if (!err) {
@@ -202,7 +202,7 @@ app.get("/Leerestudiante", (req, res) => {
 });
 
 //Buscar a un estudiante
-app.get("/Leerunestudiante/:id", (req, res) => {
+app.get("/Estudiantes/:id", (req, res) => {
     console.log("get estudiante");
     mysqlConnection.query('select e.id_persona, e.id ,p.nombre, p.apellido, p.fecha_nacimiento, p.Direccion, e.carnet, e.fecha_ingreso, e.status from estudiante e join persona p on e.id_persona = p.id where id_persona = ?', [req.params.id], (err, rows, fields) => {
         if (!err) {
@@ -212,10 +212,10 @@ app.get("/Leerunestudiante/:id", (req, res) => {
             res.send('error' + err);
         }
     });
-});
+}); 
 
 //Actualizar Estudiante
-app.put("/Actualizarestudiante/:id", (req, res) => {
+app.put("/Estudiantes/:id", (req, res) => {
     console.log("update estudiante ");
     let est = req.body;
     console.log(est);
@@ -233,7 +233,7 @@ app.put("/Actualizarestudiante/:id", (req, res) => {
 });
 
 //Eliminar Estudiante
-app.delete("/Eliminarestudiante/:id", (req, res) => {
+app.delete("/Estudiantes/:id", (req, res) => {
     console.log("update estudiante ");
     mysqlConnection.query('delete from estudiante where id = ?',
         [req.params.id], (err, result) => {
