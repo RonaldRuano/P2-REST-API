@@ -1,13 +1,14 @@
 
 const mysql = require('mysql');
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 const bdconfig = require('./configurations/bd');
-const cors = require('cors');
+var cors = require('cors');
 
-//var app = express();
-app.use(bodyParser.json());
 app.use(cors());
+app.use(express.json());
+
 
 var mysqlConnection = mysql.createConnection({
     host: bdconfig.host,
