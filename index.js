@@ -3,9 +3,11 @@ const mysql = require('mysql');
 const express = require('express');
 const bodyParser = require('body-parser');
 const bdconfig = require('./configurations/bd');
+const cors = require('cors');
 
 var app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 var mysqlConnection = mysql.createConnection({
     host: bdconfig.host,
