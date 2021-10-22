@@ -6,7 +6,7 @@ const bdconfig = require('./configurations/bd');
 const cors = require('cors');
 
 var app = express();
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(cors());
 
 var mysqlConnection = mysql.createConnection({
@@ -251,7 +251,7 @@ app.delete("/Estudiantes/:id", (req, res) => {
 });
 
 //al ejecutar la url base debe retornar los datos del estudiante •	{ nombre: “nombre estudiante”, carnet: “xxxx-xx-xxxx"
-app.get("/", (req, res) => {
+app.get("/inicio", (req, res) => {
     console.log("get lista Persona");
     mysqlConnection.query('select p.nombre, p.apellido, e.carnet from estudiante e join persona p on e.id_persona = p.id', (err, rows, fields) => {
         if (!err) {
