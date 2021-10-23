@@ -1,4 +1,3 @@
-
 const mysql = require('mysql');
 const express = require('express');
 //const bodyParser = require('body-parser');
@@ -251,7 +250,7 @@ app.delete("/Estudiantes/:id", (req, res) => {
 });
 
 //al ejecutar la url base debe retornar los datos del estudiante •	{ nombre: “nombre estudiante”, carnet: “xxxx-xx-xxxx"
-app.get("/", (req, res) => {
+app.get("/inicio", (req, res) => {
     console.log("get lista Persona");
     mysqlConnection.query('select p.nombre, p.apellido, e.carnet from estudiante e join persona p on e.id_persona = p.id', (err, rows, fields) => {
         if (!err) {
