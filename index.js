@@ -1,7 +1,7 @@
 
 const mysql = require('mysql');
 const express = require('express');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const bdconfig = require('./configurations/bd');
 const cors = require('cors');
 
